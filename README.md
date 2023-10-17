@@ -62,7 +62,8 @@ total price(synamic)
 ## material e tecnologias
 
 https://stripe.com/br - finalização de compras
-https://next-auth.js.org/ - clientes
+https://next-auth.js.org/ - authentication users
+https://authjs.dev/reference/adapter/prisma
 https://vercel.com/guides/nextjs-prisma-postgres
 https://supabase.com/ - para hospedar o banco de dados
 
@@ -80,4 +81,6 @@ https://ui.shadcn.com/docs => libe de componentes
 npx shadcn-ui@latest init
 
 https://lucide.dev/guide/packages/lucide-react => icones
+npm install @prisma/client @auth/prisma-adapter
+npm install next-auth
 
