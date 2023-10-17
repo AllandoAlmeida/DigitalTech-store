@@ -74,3 +74,10 @@ npx prisma init --datasource-provider postgresql
 
 npm install -D prettier prettier-plugin-tailwindcss -> plugin
 npx prisma migrate dev --name init
+
+https://ui.shadcn.com/docs => libe de componentes
+
+npx shadcn-ui@latest init
+
+https://lucide.dev/guide/packages/lucide-react => icones
+
