@@ -64,9 +64,13 @@ total price(synamic)
 https://stripe.com/br - finalização de compras
 https://next-auth.js.org/ - clientes
 https://vercel.com/guides/nextjs-prisma-postgres
+https://supabase.com/ - para hospedar o banco de dados
+
 
 ## inicializadores
 npx create-next-app@latest .
 npm install prisma --save-dev
 npx prisma init --datasource-provider postgresql
 
+npm install -D prettier prettier-plugin-tailwindcss -> plugin
+npx prisma migrate dev --name init
