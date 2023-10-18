@@ -11,7 +11,6 @@ import {
 import { Card } from "./card";
 import { Button } from "./button";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
-import { sign } from "crypto";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Separator } from "@radix-ui/react-separator";
@@ -33,16 +32,16 @@ const Header = () => {
           </Button>
         </SheetTrigger>
         <SheetContent side={"left"}>
-          <SheetHeader className="text-left text-lg">Menu</SheetHeader>
+          <SheetHeader className="text-left text-lg ">Menu</SheetHeader>
           {status == "authenticated" && data?.user && (
-            <div className="flex flex-col">
-              <div className="py-04 flex items-center gap-2">
+            <div className="flex flex-col gap-2">
+              <div className="py-5 flex items-center gap-2">
                 <Avatar>
-                  <AvatarFallback>
+                  <AvatarFallback >
                     {data.user.name?.[0].toUpperCase()}
                   </AvatarFallback>
                   {data.user.image && (
-                    <AvatarImage src={data.user.image}></AvatarImage>
+                    <AvatarImage src={data.user.image} className="rounded-md"></AvatarImage>
                   )}
                 </Avatar>
                 <p className="font-medium">{data.user.name}</p>

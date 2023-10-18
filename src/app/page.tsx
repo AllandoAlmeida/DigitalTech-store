@@ -6,6 +6,6 @@ import Image from 'next/image'
 export default function Home() {
   const {data} = useSession();
   return (
-    <div>{data?.user?.name}</div>
+    <div className='p-7'>{data?.user?.name}</div>
   )
 }
