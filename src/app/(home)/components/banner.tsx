@@ -10,7 +10,7 @@ export const Banner = ({
   text?:string
 }) => {
   return (
-    <div className="mt-5 px-5">
+    <div className="mt-5">
       <Image
         src={src}
         height={0}

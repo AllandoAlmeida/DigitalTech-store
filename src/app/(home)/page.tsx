@@ -2,6 +2,7 @@ import { prismaClient } from "@/lib/prisma";
 import { Banner } from "./components/banner";
 import { Categories } from "./components/catogories";
 import ProductList from "./components/product-list";
+import { SectionTitle } from "./components/section-title";
 
 export default async function Home() {
   const deals = await prismaClient.product.findMany({
@@ -11,23 +12,46 @@ export default async function Home() {
       },
     },
   });
+
+  const keyboards = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "keyboards",
+      },
+    },
+  });
+
+  const mouses = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "mouses",
+      },
+    },
+  });
+
   return (
-    <div className="">
+    <div className="flex flex-col gap-8 px-5">
       <Banner src="/banner-01.png" discount={50} text={"esse mês"} />
-      <div className="mt-8 px-5">
+      <div>
         <Categories />
       </div>
-      <div className="mt-8 px-5">
-        <p className="my-2 mb-2 font-bold  uppercase">Ofertas</p>
+      <div>
+        <SectionTitle text={"oferta"} />
         <ProductList products={deals} />
       </div>
-      <div className="mt-8 px-5">
-        <p className="my-2 mb-2 font-bold uppercase">Novidades</p>
+      <div className="">
         <Banner src="/banner-02.png" discount={50} text={"em Mouses"} />
       </div>
-      <div className="mt-8 px-5">
-        <p className="my-2 mb-2 font-bold uppercase">Novidades</p>
-        <Banner src="/banner-03.png" discount={50} text={"em Fones"} />
+      <div>
+        <SectionTitle text={"teclado"} />
+        <ProductList products={keyboards} />
+      </div>
+      <div>
+        <Banner src="/banner-03.png" discount={50} text={"em fones"} />
+      </div>
+      <div>
+        <SectionTitle text={"Mouses"} />
+        <ProductList products={mouses} />
       </div>
     </div>
   );
