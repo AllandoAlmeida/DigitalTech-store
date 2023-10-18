@@ -35,16 +35,22 @@ const Header = () => {
           <SheetHeader className="text-left text-lg ">Menu</SheetHeader>
           {status == "authenticated" && data?.user && (
             <div className="flex flex-col gap-2">
-              <div className="py-5 flex items-center gap-2">
+              <div className="flex items-center gap-2 py-5">
                 <Avatar>
-                  <AvatarFallback >
+                  <AvatarFallback>
                     {data.user.name?.[0].toUpperCase()}
                   </AvatarFallback>
                   {data.user.image && (
-                    <AvatarImage src={data.user.image} className="rounded-md"></AvatarImage>
+                    <AvatarImage
+                      src={data.user.image}
+                      className="rounded-md"
+                    ></AvatarImage>
                   )}
                 </Avatar>
-                <p className="font-medium">{data.user.name}</p>
+                <div className="flex flex-col">
+                  <p className="font-medium">{data.user.name}</p>
+                  <p className="text-sm opacity-75">Boas Compras!</p>
+                </div>
               </div>
               <Separator />
             </div>
