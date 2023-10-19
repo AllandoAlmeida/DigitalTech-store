@@ -2,6 +2,7 @@ import { Category } from "@prisma/client";
 import { HeadphonesIcon, KeyboardIcon, MonitorIcon, MouseIcon, SpeakerIcon, SquareIcon } from "lucide-react";
 
 export interface CategoryItemProps {
+  products: any;
   category: Category;
 }
 

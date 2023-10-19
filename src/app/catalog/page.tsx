@@ -9,7 +9,7 @@ const CatalogPage = async () => {
   return (
     <div className="flex flex-col gap-8 p-5">
       <Badge
-        className="w-32 text-center gap-1 border-2 border-primary px-3 py-[0.375rem] text-base uppercase"
+        className="w-32 gap-1 border-2 border-primary px-3 py-[0.375rem] text-center text-base uppercase"
         variant={"outline"}
       >
         <ShapesIcon size={16} />
