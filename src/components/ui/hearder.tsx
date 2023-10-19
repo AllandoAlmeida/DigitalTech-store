@@ -32,8 +32,9 @@ const Header = () => {
     await signOut();
   };
   return (
-    <Card className="flex items-center justify-between p-[1.875rem]">
-      <Sheet>
+    <Card className="flex items-center justify-between p-[1.875rem]  ">
+      <div className="flex items-center justify-between w-full md:max-w-[50rem] md:w-[50rem] md:m-auto">      
+      <Sheet >
         <SheetTrigger asChild>
           <Button size="icon" variant={"outline"}>
             <MenuIcon />
@@ -122,6 +123,7 @@ const Header = () => {
           <Cart />
         </SheetContent>
       </Sheet>
+      </div>
     </Card>
   );
 };

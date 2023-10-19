@@ -19,13 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt">
       <body className={inter.className}>
-        <div className="flex h-full flex-col">
+        <div className="flex h-full flex-col w-full">
           <AuthProvider>
             <CartProvider>
               <Header />
-              <div className="flex-1">{children}</div>
+              <div className="flex-1 md:max-w-[50rem] md:w-[50rem] md:m-auto">{children}</div>
               <Footer />
             </CartProvider>
           </AuthProvider>
