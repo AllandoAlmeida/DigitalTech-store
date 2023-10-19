@@ -32,7 +32,7 @@ const ProductInfo = ({
   };
 
   return (
-    <div className="flex flex-col px-5">
+    <div className="flex flex-col">
       <h2 className="text-log">{name}</h2>
       <div className="flex items-center gap-1 ">
         <h1>R$ {totalPrice.toFixed(2)}</h1>
@@ -92,6 +92,7 @@ const ProductInfo = ({
         </div>
         <p className="text-xs font-bold">Frete Grátis</p>
       </div>
+     
     </div>
   );
 };
