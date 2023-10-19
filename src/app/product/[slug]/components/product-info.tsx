@@ -3,25 +3,23 @@
 import { Button } from "@/components/ui/button";
 import { DiscountBadge } from "@/components/ui/discount-badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
+import { CartContext } from "@/providers/cart";
 import {
-  ArrowDownIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
   TruckIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 interface ProductInfoProps {
-  product: Pick<
-    ProductWithTotalPrice,
-    "basePrice" | "description" | "discountPercentage" | "totalPrice" | "name"
-  >;
+  product: ProductWithTotalPrice
 }
 
 const ProductInfo = ({
-  product: { basePrice, description, discountPercentage, totalPrice, name },
+  product
 }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
+  const {addProductToCart } = useContext(CartContext)
 
   const handleDecreaseQuantityClick = () => {
     setQuantity((prev) => (prev === 1 ? prev : prev - 1));
@@ -31,18 +29,22 @@ const ProductInfo = ({
     setQuantity((prev) => prev + 1);
   };
 
+  const handleAddProductToCart = () => {
+    addProductToCart({...product, quantity})
+  }
+
   return (
     <div className="flex flex-col">
-      <h2 className="text-log">{name}</h2>
+      <h2 className="text-log">{product.name}</h2>
       <div className="flex items-center gap-1 ">
-        <h1>R$ {totalPrice.toFixed(2)}</h1>
-        {discountPercentage > 0 && (
-          <DiscountBadge className="">{discountPercentage}</DiscountBadge>
+        <h1>R$ {product.totalPrice.toFixed(2)}</h1>
+        {product.discountPercentage > 0 && (
+          <DiscountBadge className="">{product.discountPercentage}</DiscountBadge>
         )}
       </div>
-      {discountPercentage > 0 && (
+      {product.discountPercentage > 0 && (
         <p className="text-sm line-through opacity-75">
-          R$ {Number(basePrice).toFixed(2)}
+          R$ {Number(product.basePrice).toFixed(2)}
         </p>
       )}
 
@@ -66,11 +68,12 @@ const ProductInfo = ({
       <div className="mt-8 flex flex-col gap-3">
         <h3 className="font-bold">description</h3>
         <p className="line-clamp-6 overflow-hidden text-ellipsis text-justify text-sm opacity-60">
-          {description}
+          {product.description}
         </p>
       </div>
       <div>
-        <Button className="mt-8 w-full uppercase">
+        <Button className="mt-8 w-full uppercase"
+        onClick={handleAddProductToCart}>
           {" "}
           Adicionar ao carrinho
         </Button>
