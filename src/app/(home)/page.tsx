@@ -30,6 +30,7 @@ export default async function Home() {
   });
 
   return (
+    
     <div className="flex flex-col gap-8 px-5 py-8">
       <Banner src="/banner-01.png" discount={50} text={"esse mês"} />
       <div>
