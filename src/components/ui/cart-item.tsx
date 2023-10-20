@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { CartContext, CartProduct } from "@/providers/cart";
-import { ProductWithTotalPrice } from "@/helpers/product";
 import { Button } from "./button";
 import { ArrowLeftIcon, ArrowRightIcon, TrashIcon } from "lucide-react";
 import { useContext, useState } from "react";

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
-    <Link href={`/category/${category.slug}`}>
+    <Link href={`/Pages/category/${category.slug}`}>
       <Badge
         variant={"outline"}
         className="flex items-center justify-center gap-2 rounded-lg py-3"

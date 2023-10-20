@@ -15,22 +15,21 @@ import {
   SheetContent,
   SheetHeader,
   SheetTrigger,
-  SheetClose,
 } from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { Separator } from "@radix-ui/react-separator";
 import Link from "next/link";
 import { Cart } from "./cart";
-import { useContext, useState } from "react";
 import { CartContext } from "@/providers/cart";
 
-import React from "react";
+import React, { useContext } from "react";
 import { Badge } from "@/components/ui/badge";
+import { NavigationMenu } from "./navigation-menu";
+import { Profile } from "./profile";
+import { NavigationMenuAuth } from "./navigation-menu-auth";
 
 const Header = () => {
+  const { status } = useSession();
   const { count } = useContext(CartContext);
-  const { status, data } = useSession();
   const handleLoginClick = async () => {
     await signIn();
   };
@@ -47,76 +46,32 @@ const Header = () => {
             </Button>
           </SheetTrigger>
           <SheetContent side={"left"}>
-            <SheetHeader className="text-left text-lg ">Menu</SheetHeader>
-            {status == "authenticated" && data?.user && (
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2 py-5">
-                  <Avatar>
-                    <AvatarFallback>
-                      {data.user.name?.[0].toUpperCase()}
-                    </AvatarFallback>
-                    {data.user.image && (
-                      <AvatarImage
-                        src={data.user.image}
-                        className="rounded-md"
-                      ></AvatarImage>
-                    )}
-                  </Avatar>
-                  <div className="flex flex-col">
-                    <p className="font-medium">{data.user.name}</p>
-                    <p className="text-sm opacity-75">Boas Compras!</p>
-                  </div>
-                </div>
-                <Separator />
-              </div>
-            )}
-
+            <SheetHeader className="text-left text-lg ">
+              Menu
+            </SheetHeader>
+            <Profile />
             <div className="mt-4 flex flex-col gap-2">
               {status == "unauthenticated" && (
-                <Button
+                <NavigationMenuAuth
                   onClick={handleLoginClick}
-                  variant={"outline"}
-                  className="w-full justify-start gap-2"
-                >
-                  <LogInIcon size={16} />
-                  Fazer Login
-                </Button>
+                  icon={LogInIcon}
+                  text={"Fazer Login"}
+                />
               )}
               {status == "authenticated" && (
-                <Button
+                <NavigationMenuAuth
                   onClick={HandleLogOutClick}
-                  variant={"outline"}
-                  className="w-full justify-start gap-2"
-                >
-                  <LogOutIcon size={16} />
-                  Fazer Logout
-                </Button>
+                  icon={LogOutIcon}
+                  text={"Fazer Logout"}
+                />
               )}
-              <Button
-                variant={"outline"}
-                className="w-full justify-start gap-2"
-              >
-                <HomeIcon size={16} />
-                Início
-              </Button>
-              <Button
-                variant={"outline"}
-                className="w-full justify-start gap-2"
-              >
-                <PercentIcon size={16} />
-                Ofertas
-              </Button>
-              <SheetClose asChild>
-                <Link href={"/catalog"}>
-                  <Button
-                    variant={"outline"}
-                    className="w-full justify-start gap-2"
-                  >
-                    <ListOrderedIcon size={16} />
-                    Catálogo
-                  </Button>
-                </Link>
-              </SheetClose>
+              <NavigationMenu route={"/"} icon={HomeIcon} text={"Início"} />
+              <NavigationMenu route={"/"} icon={PercentIcon} text={"Ofertas"} />
+              <NavigationMenu
+                route={"/Pages/catalogPage"}
+                icon={ListOrderedIcon}
+                text={"Catálogo"}
+              />
             </div>
           </SheetContent>
         </Sheet>
@@ -130,12 +85,10 @@ const Header = () => {
             <Button size="icon" variant={"outline"} className="relative ">
               <ShoppingCartIcon />
               {count > 0 ? (
-                <Badge className="absolute color-yellow right-0 top-0 h-[0.rem] w-[0.01rem] items-center justify-center rounded-full">
+                <Badge className="color-yellow absolute right-0 top-0 h-[0.rem] w-[0.01rem] items-center justify-center rounded-full">
                   {count}
                 </Badge>
-              ) : (
-                ""
-              )}
+              ) : ("")}
             </Button>
           </SheetTrigger>
 
