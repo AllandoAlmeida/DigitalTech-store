@@ -32,7 +32,7 @@ async function main() {
         name: "Logitech Pro X Superlight",
         slug: "logitech-pro-x-superlight",
         description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id malesuada elit, eget vulputate justo. Sed sollicitudin velit dolor, ut gravida odio iaculis a.\nNulla risus justo, tempor eu felis eu, efficitur pulvinar risus. Sed viverra, nisi id egestas convallis, massa lorem convallis magna, vel convallis mi turpis nec ante. Maecenas posuere lacus id gravida dignissim. Morbi sit amet rutrum ex. Duis sit amet sem orci. Morbi non nisl sed mauris mattis ullamcorper quis eget metus.\nUt pellentesque ornare erat, vitae blandit ex pulvinar sit amet. Ut pellentesque lorem at eros vestibulum lobortis. Proin bibendum est facilisis nulla tristique vestibulum. Etiam placerat tortor sit amet lacinia volutpat. Curabitur lectus turpis, faucibus vitae tortor in, lacinia tristique neque.",
+          "O PRO X SUPERLIGHT, nosso mouse PRO mais leve de todos, é uma revolução da engenharia com peso inferior a 63 gramas. Ele é quase 25% mais leve que o nosso mouse sem fio PRO padrão. Para alcançarmos uma redução extrema de peso com zero perda de desempenho, lançamos mão de minuciosa engenharia.",
         imageUrls: [
           "https://fsw-store.s3.sa-east-1.amazonaws.com/01_logi-superlight.png",
           "https://fsw-store.s3.sa-east-1.amazonaws.com/02_logi-superlight.png",
