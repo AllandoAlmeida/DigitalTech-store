@@ -48,7 +48,7 @@ const Header = () => {
           <SheetContent side={"left"}>
             <SheetHeader className="text-left text-lg ">
               Menu
-            </SheetHeader>
+              </SheetHeader>
             <Profile />
             <div className="mt-4 flex flex-col gap-2">
               {status == "unauthenticated" && (

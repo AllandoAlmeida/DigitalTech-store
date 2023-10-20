@@ -1,5 +1,6 @@
-import { Separator } from "@radix-ui/react-separator";
+
 import React from "react";
+import { Separator } from "./separator";
 
 export const CartDetails = ({
   label,

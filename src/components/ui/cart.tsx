@@ -28,13 +28,13 @@ export const Cart = () => {
             />
           ))
         ) : (
-          <div className="mt-[50px] flex items-center justify-center border-2">
+          <div className="mt-[50px] flex items-center justify-center ">
             <span>Carrinho vazio</span>
           </div>
         )}
       </div>
       <section className="flex flex-col gap-3">
-        <CartDetails label={"subTotal"} value={subTotal.toFixed(2)} />
+        <CartDetails label={"SubTotal"} value={subTotal.toFixed(2)} />
         <CartDetails label={"Frete"} value={"Grátis"} />
         <CartDetails label={"Desconto"} value={totalDiscount.toFixed(2)} />
         <CartDetails label={"Total"} value={total.toFixed(2)} />
