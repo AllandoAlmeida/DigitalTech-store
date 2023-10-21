@@ -25,7 +25,7 @@ const CartItem = ({ product }: CartItemProps) => {
   };
 
   return (
-    <div className="mt-8 flex items-center justify-between">
+    <div className="rounded-md mt-8 flex items-center justify-between">
       <div className="flex items-center gap-2">
         {/* direito */}
         <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent">

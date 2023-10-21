@@ -81,6 +81,8 @@ https://ui.shadcn.com/docs => libe de componentes
 npx shadcn-ui@latest init
 npx shadcn-ui@latest add avatar
 npx shadcn-ui@latest add badge
+npx shadcn-ui@latest add scroll-area
+
 
 https://lucide.dev/guide/packages/lucide-react => icones
 npm install @prisma/client @auth/prisma-adapter
