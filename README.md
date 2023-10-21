@@ -62,6 +62,7 @@ total price(synamic)
 ## material e tecnologias
 
 https://stripe.com/br - finalização de compras
+https://www.npmjs.com/package/@stripe/stripe-js
 https://next-auth.js.org/ - authentication users
 https://authjs.dev/reference/adapter/prisma
 https://vercel.com/guides/nextjs-prisma-postgres
@@ -87,4 +88,5 @@ npx shadcn-ui@latest add scroll-area
 https://lucide.dev/guide/packages/lucide-react => icones
 npm install @prisma/client @auth/prisma-adapter
 npm install next-auth
-
+npm install stripe
+npm i @stripe/stripe-js
