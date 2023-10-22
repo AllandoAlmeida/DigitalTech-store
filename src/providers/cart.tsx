@@ -1,6 +1,7 @@
 "use client";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import { ReactNode, createContext, useMemo, useState } from "react";
+import { useToast } from "@/components/ui/use-toast"
 
 export interface CartProduct extends ProductWithTotalPrice {
   quantity: number;
@@ -18,7 +19,7 @@ export interface ICartContext {
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
   removeProductFromCart: (productId: string) => void;
-  
+  Toast: any,
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -34,6 +35,7 @@ export const CartContext = createContext<ICartContext>({
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
   removeProductFromCart: () => {},
+  Toast: () => {},
 });
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -58,6 +60,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   },[products])
 
   const totalDiscount = subTotal - total
+
+  const Toast = () => {
+    const { toast } = useToast()
+  }  
 
   const addProductToCart = (product: CartProduct) => {
     const productIsAlreadyOnCart = products.some(
@@ -130,6 +136,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         cartBasePrice: 0,
         cartTotalDiscount: 0,
         count,
+        Toast
       }}
     >
       {children}

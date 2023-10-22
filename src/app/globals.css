@@ -64,6 +64,36 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
+
+  .toast-container {
+    background-color: #343b41;
+    color: #f8f9fa;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    height: 69px;
+    width: 320px;
+    left: 1129px;
+    top: 28px;
+    border-radius: 4px;
+  }
+  
+  .toast {
+    background-color: #343b41;
+    color: #f8f9fa;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    height: 24px;
+    width: 250px;
+  }
+  
+  /* Continue com as classes para toast--success e toast--error se necessário */
+  
 }
 
 @layer base {

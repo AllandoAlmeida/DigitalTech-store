@@ -1,25 +1,20 @@
 "use client";
 
+import { AddProductCart } from "@/components/ui/add-Product-cart";
 import { Button } from "@/components/ui/button";
 import { DiscountBadge } from "@/components/ui/discount-badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import { CartContext } from "@/providers/cart";
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  TruckIcon,
-} from "lucide-react";
+import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
 
 interface ProductInfoProps {
-  product: ProductWithTotalPrice
+  product: ProductWithTotalPrice;
 }
 
-const ProductInfo = ({
-  product
-}: ProductInfoProps) => {
+const ProductInfo = ({ product }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
-  const {addProductToCart } = useContext(CartContext)
+  const { addProductToCart, Toast} = useContext(CartContext);
 
   const handleDecreaseQuantityClick = () => {
     setQuantity((prev) => (prev === 1 ? prev : prev - 1));
@@ -30,8 +25,9 @@ const ProductInfo = ({
   };
 
   const handleAddProductToCart = () => {
-    addProductToCart({...product, quantity})
-  }
+    addProductToCart({ ...product, quantity });
+    
+  };
 
   return (
     <div className="flex flex-col">
@@ -39,7 +35,9 @@ const ProductInfo = ({
       <div className="flex items-center gap-1 ">
         <h1>R$ {product.totalPrice.toFixed(2)}</h1>
         {product.discountPercentage > 0 && (
-          <DiscountBadge className="">{product.discountPercentage}</DiscountBadge>
+          <DiscountBadge className="">
+            {product.discountPercentage}
+          </DiscountBadge>
         )}
       </div>
       {product.discountPercentage > 0 && (
@@ -71,13 +69,11 @@ const ProductInfo = ({
           {product.description}
         </p>
       </div>
-      <div>
-        <Button className="mt-8 w-full uppercase"
-        onClick={handleAddProductToCart}>
-          {" "}
-          Adicionar ao carrinho
-        </Button>
-      </div>
+      <AddProductCart text={
+        "Produto adicionado com sucesso"
+      }
+         description={"Adicionar produto"}
+         onClick1={handleAddProductToCart}/>
       <div className="mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2">
         <div className="flex items-center gap-2">
           <TruckIcon />
