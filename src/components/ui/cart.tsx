@@ -38,7 +38,7 @@ export const Cart = () => {
         <ScrollArea>
           <div className="flex h-full flex-col gap-5">
             {products.length > 0 ? (
-              products?.map((product) => (
+              products.map((product) => (
                 <CartItem
                   key={product.id}
                   product={computeProductTotalPrice(product as any) as any}
@@ -51,19 +51,21 @@ export const Cart = () => {
             )}
           </div>
         </ScrollArea>
+        {products.length > 0 && (
+          <section className="flex flex-col gap-3">
+            <CartDetails label={"SubTotal"} value={subTotal.toFixed(2)} />
+            <CartDetails label={"Frete"} value={"Grátis"} />
+            <CartDetails label={"Desconto"} value={totalDiscount.toFixed(2)} />
+            <CartDetails label={"Total"} value={total.toFixed(2)} />
+            <Button
+              className="mt-7 font-bold uppercase"
+              onClick={handleFinishPurchase}
+            >
+              Finalizar Compra{" "}
+            </Button>
+          </section>
+        )}
       </div>
-      <section className="flex flex-col gap-3">
-        <CartDetails label={"SubTotal"} value={subTotal.toFixed(2)} />
-        <CartDetails label={"Frete"} value={"Grátis"} />
-        <CartDetails label={"Desconto"} value={totalDiscount.toFixed(2)} />
-        <CartDetails label={"Total"} value={total.toFixed(2)} />
-        <Button
-          className="mt-7 font-bold uppercase"
-          onClick={handleFinishPurchase}
-        >
-          Finalizar Compra{" "}
-        </Button>
-      </section>
     </section>
   );
 };
