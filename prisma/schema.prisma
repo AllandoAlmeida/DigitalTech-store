@@ -19,15 +19,37 @@ model Category {
 }
 
 model Product {
-  id String @id @default(uuid())
-  name String
-  slug String
+  id          String   @id @default(uuid())
+  name        String
+  slug        String
   description String
-  basePrice Decimal @db.Decimal(8, 2)
-  imageUrls String[]
-  categoryId String
-  category Category @relation(fields: [categoryId], references: [id])
+  basePrice   Decimal  @db.Decimal(8, 2)
+  imageUrls   String[]
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
   discountPercentage Int @default(0)
+  orders      ProductInOrder[]
+}
+
+model Order {
+  id          String           @id @default(uuid())
+  userId      String
+  totalAmount Decimal          @db.Decimal(15, 2)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  products    ProductInOrder[]
+}
+
+model ProductInOrder {
+  id          String    @id @default(uuid())
+  order       Order     @relation(fields: [orderId], references: [id])
+  product     Product   @relation(fields: [productId], references: [id])
+  orderId     String
+  productId   String
+  quantity    Int
+  value       Decimal   @db.Decimal(8, 2)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Account {
@@ -74,3 +96,5 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+
